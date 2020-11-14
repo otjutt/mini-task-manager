@@ -1,0 +1,38 @@
+.component-page-home {
+  .main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .inner-wrapper {
+      max-width: 750px;
+      width: 100%;
+      margin-top: 50px;
+      .table td {
+        vertical-align: middle;
+      }
+    }
+    .btn-case {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: flex-end;
+      .btn {
+        margin-left: 5px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+    .striked {
+      text-decoration: line-through;
+      color: #bbb;
+    }
+    .add-task-button-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
