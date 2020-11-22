@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { ReduxAction } from "./Types";
-import * as Axios from "axios";
 import Dexie from "dexie";
 
 export const ACTION__PAGE_HOME__FORM_FIELD: string = 'page_home__form_field';
