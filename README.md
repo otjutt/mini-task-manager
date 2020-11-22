@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Mini Task Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is not a todo manager. The purpose of this project is to help the online community stay focused on the tasks at hand. You add a task, do it and delete it. It is as simple as that.  
 
 ## Available Scripts
 
