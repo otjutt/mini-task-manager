@@ -35,6 +35,21 @@ class PageHome extends React.Component<ConnectedProps<typeof connector>> {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
         this.onFormFieldChange = this.onFormFieldChange.bind(this);
+        this.removeTask = this.removeTask.bind(this);
+    }
+
+    removeTask(e: any) {
+        e.preventDefault();
+        let itemId: number = parseInt(e.currentTarget.getAttribute('data-itemid'));
+
+        const db: any = new Dexie('MiniTaskManager');
+        db.version(1).stores({
+            tasks: '++id, description'
+        });
+        db.tasks.delete(itemId).then((e: any) => {
+            this.props.actionListTasks();
+        }).catch((e: any) => {
+        });
     }
 
     onSubmit(e: any) {
@@ -73,13 +88,15 @@ class PageHome extends React.Component<ConnectedProps<typeof connector>> {
                     return (
                         <React.Fragment key={item.id}>
                             <tr>
-                                <td width={50}>
-                                    <input type={`checkbox`} />
-                                </td>
+                                {/*<td width={50}>*/}
+                                {/*    <input type={`checkbox`} />*/}
+                                {/*</td>*/}
                                 <td>{item.description}</td>
                                 <td width={170}>
                                     <div className={`btn-case`}>
-                                        <button className={`btn btn-danger`}>
+                                        <button className={`btn btn-danger`}
+                                                data-itemid={item.id}
+                                                onClick={this.removeTask}>
                                             <i className="las la-trash"></i>
                                         </button>
                                     </div>
@@ -96,10 +113,12 @@ class PageHome extends React.Component<ConnectedProps<typeof connector>> {
             <React.Fragment>
                 <div className={`main`}>
                     <div className={`inner-wrapper`}>
+                        <h1 className={`header-text`}>Mini Task Manager</h1>
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <input type="text"
-                                       className="form-control"
+                                       className="form-control task-field"
+                                       autoComplete={`off`}
                                        id="exampleInputEmail1"
                                        onChange={this.onFormFieldChange}
                                        value={this.props.formField.description}
@@ -107,11 +126,7 @@ class PageHome extends React.Component<ConnectedProps<typeof connector>> {
                                        aria-describedby="emailHelp"
                                        placeholder="Write task description here..." />
                             </div>
-                            <div className={`add-task-button-wrapper`}>
-                                <button type="submit" className="btn btn-primary">Add Task</button>
-                            </div>
                         </form>
-                        <br />
                         <table className="table">
                             <tbody>
                             {collectionReact}
