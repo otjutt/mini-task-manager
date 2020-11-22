@@ -20,7 +20,7 @@ class Page404 extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Hello home page!</h1>
+                <h1>404!</h1>
             </React.Fragment>
         );
     }

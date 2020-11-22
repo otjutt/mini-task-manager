@@ -35,7 +35,6 @@ ReactDOM.render(
             <ConnectedRouter history={history}>
                 <Switch>
                     <Route path="/" key="home" component={PageHome} strict exact/>,
-
                     <Route key="404" component={Page404} />
                 </Switch>
             </ConnectedRouter>
